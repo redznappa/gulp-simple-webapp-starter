@@ -1,0 +1,34 @@
+// grid variables
+$grid-columns: 12;
+$grid-max-width: 125em;
+
+
+
+
+// breakpoints
+$breakpoint-small: "only screen and (min-width: 20em)";
+$breakpoint-medium: "only screen and (min-width: 30em)";
+$breakpoint-medium-ls: "only screen and (min-width: 60em)";
+$breakpoint-large: "only screen and (min-width: 70em)";
+
+// fonts
+$base-font-size: 16px;
+$base-font-standard: arial, helvetica, "free sans", sans-serif;
+$base-font-custom: 'arial';
+$head-font-custom: 'arial';
+
+// colors
+$color-text: #444;
+$color-back: #fff;
+$color-main: #567;
+$color-text-light: #9f9f9f;
+$color-light: lighten($color-main, 20%);
+$color-dark: darken($color-main, 20%);
+$color-back-darken: darken($color-back, 5%);
+$black: #222;
+$even-bg: #cceaf0;
+$odd-bg: #fefefe;
+$dashboard-blue: #084C8A;
+$dashboard-blue-2: lighten($dashboard-blue, 15%);
+$dashboard-blue-3: lighten($dashboard-blue, 25%);
+$dashboard-blue-4: lighten($dashboard-blue, 35%);

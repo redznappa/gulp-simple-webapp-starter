@@ -60,7 +60,7 @@ gulp.task('fonts', function() {
 })
 
 
-// Spin up a web server with sync & refesh on file changes
+// APP web server - Spin up a web server with sync & refesh on file changes
 gulp.task('browserSync', function() {
   browserSync.init({
     server: {
@@ -68,6 +68,16 @@ gulp.task('browserSync', function() {
     },
   })
 })
+
+// dist web server - Spin up a web server with sync & refesh on file changes
+gulp.task('build-browserSync', function() {
+  browserSync.init({
+    server: {
+      baseDir: 'dist'
+    },
+  })
+})
+
 
 
 // Gulp Watch folders & files for changes
@@ -81,7 +91,7 @@ gulp.task('watch', ['browserSync', 'sass'], function(){
 
 gulp.task('build', function (callback) {
   runSequence('clean:dist',
-    ['sass', 'useref', 'images', 'fonts'],
+    ['sass', 'useref', 'images', 'fonts', 'build-browserSync'],
     callback
   )
 })

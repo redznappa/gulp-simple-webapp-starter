@@ -1,0 +1,72 @@
+// base styles
+/* ************************************************************************** */
+/* ****************                  _BASE                    **************** */
+/* ************************************************************************** */
+body, table, input, textarea, select {
+  font-family: $base-font-standard;
+  font-size: $base-font-size;
+  font-weight: 400;
+  @include reset;
+  color: $color-text;
+  background-color: $color-back;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 1.5em 0;
+}
+
+h1 {
+  font-size: 9vmin;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+  color: $color-main;
+}
+
+a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: $color-light;
+}
+
+// custom fonts
+.wf-active {
+
+  body, table, input, textarea, select {
+    font-family: $base-font-custom;
+  }
+
+  h1, h2, h3, legend, button, a.button {
+    font-family: $head-font-custom;
+  }
+
+}
+// Lists
+ul {
+  list-style-type: none;
+}
+// Description lists
+dl {
+  margin: 1rem 0;
+}
+dt,dd {margin-top: .625rem}
+
+// Section
+section {
+  padding: 1.25rem 0.625rem 3rem 0.625rem;  // Top 20px / 16px = 1.25; Left & Right 10px / 16px = .625
+}
+
+//intro paragraph
+.intro {
+  font-size: 1.25rem;
+}

@@ -1,0 +1,23 @@
+@media #{$breakpoint-small} {
+  .login.push{margin-left: 0;}
+}
+@media #{$breakpoint-medium} {
+  .login.push{margin-left: 25%;}
+  .column-4 {width: 50%;}
+}
+@media #{$breakpoint-large} {
+  .login.push{margin-left: 37.5%;}
+  .column-4 {width: 25%;}
+}
+
+.login .mdl-card__supporting-text {
+    width: 100%;
+}
+
+.login .mdl-textfield {
+  display: block;
+  width: 100%;
+}
+.login .mdl-card__actions.mdl-card--border {
+  text-align: center;
+}

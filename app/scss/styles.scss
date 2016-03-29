@@ -1,7 +1,19 @@
-// styles.scss
-.testing {
-  width: percentage(5/7);
-  display: flex;
-}
+// helpers
+@import 'helpers/_variables';
+@import 'helpers/_mixins';
 
-body {background: pink;}
+// base
+@import 'base/_normalize';
+@import 'base/_base';
+
+//layout
+@import 'layout/_footer';
+
+
+// grid-columns
+@import 'grid/_grid';
+
+// pages
+@import 'pages/_homepage';
+@import 'pages/_dashboard';
+@import 'pages/_login';

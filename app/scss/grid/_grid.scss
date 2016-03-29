@@ -1,0 +1,67 @@
+/* ************************************************************************** */
+/* ****************          grid/_grid.scss                 **************** */
+/* ************************************************************************** */
+
+*, *:after, *:before {
+    margin: 0;
+    padding: 0;
+    @include border-box;
+    }
+
+img {
+    width: auto;
+    max-width: 100%;
+    height: auto !important;
+
+    }
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    }
+
+.container, .row {
+    @extend %clearfix;
+    }
+
+.grid-center {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    }
+.push {
+  margin-left: 33.3333333333%;
+}
+
+[class*='column-'] {
+    float: left;
+    padding: 1em;
+    width: 100%;
+    min-height: 1px;
+    }
+
+
+
+
+    @media #{$breakpoint-medium} {
+        .container {
+          /*  width: 95%; */
+            max-width: $grid-max-width;
+            }
+        @for $i from 1 through $grid-columns {
+            .column-#{$i} {
+                width: 100% / 12 * $i;
+                }
+            }
+        }
+        @media #{$breakpoint-medium-ls} {
+            .container {
+              /* width: 95%; */
+                max-width: $grid-max-width;
+                }
+            @for $i from 1 through $grid-columns {
+                .column-#{$i} {
+                    width: 100% / $grid-columns * $i;
+                    }
+                }
+            }
