@@ -3,7 +3,7 @@
 ### Inspired by CSS Tricks tutorial
 [CSS tricks Gulp tutorial](https://css-tricks.com/gulp-for-beginners/)
 
-Include
+Includes
 * browserSync web server - This will reload your browser upon saves to  .css .html .js files.
 Any connected devices browser will also reload.
 * concatenate js, css files attached to your HTML files.
@@ -18,13 +18,12 @@ More to be added such as:
 ---
 
 ## Get Started
-To get you started you can simply clone the gulp-simple-webapp-starter repository and install the dependencies:
+To get you started you need Node.js and Gulp installed, then you can simply clone the gulp-simple-webapp-starter repository and install the dependencies:
 
-Dependencies
+#### Prerequisite
 
 * Node.js
 * Gulp
-* Run npm install
 
 #### Node.js
 
@@ -34,7 +33,7 @@ Download the relevant node installer from the link below.
 
 
 #### Gulp
-Install Gulp
+Install Gulp, you may need to add 'sudo' at the start.
 ```
 $npm install gulp -g
 
@@ -45,8 +44,18 @@ With node and Gulp installed, open up your project folder from the command line.
 Mikes-iMac:~ mike$ cd sites/myWebApp
 
 ```
+To clone the git repo use the following command, also from your project folder in the command link
+```
+
+$git clone https://github.com/redznappa/gulp-simple-webapp-starter.git .
+
+```
+
+
+### Dependencies
+
 #### Run npm install
-Now in your project folder run the command
+Now in your project folder from the command line tool, run the following command. This will install all the dependencies for you. This is everything in the package.json file.  Sit back for a while as it will take a minute or two.
 
 ```
 $npm install
