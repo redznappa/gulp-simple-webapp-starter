@@ -1,21 +1,33 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var browserSync = require('browser-sync').create();
-var useref = require('gulp-useref');
-var uglify = require('gulp-uglify');
-var gulpIf = require('gulp-if');
-var cssnano = require('gulp-cssnano');
-var imagemin = require('gulp-imagemin');
-var cache = require('gulp-cache');
-var del = require('del');
-var runSequence = require('run-sequence');
+var
+  gulp = require('gulp'),
+  sass = require('gulp-sass'),
+  browserSync = require('browser-sync').create(),
+  useref = require('gulp-useref'),
+  uglify = require('gulp-uglify'),
+  gulpIf = require('gulp-if'),
+  cssnano = require('gulp-cssnano'),
+  imagemin = require('gulp-imagemin'),
+  cache = require('gulp-cache'),
+  del = require('del'),
+  runSequence = require('run-sequence'),
+  pngquant = require('imagemin-pngquant');
 
-// Gulp tasks
+// File locations
+var
+  source = 'app/',
+  dest = 'dist/',
+
+  images = {
+    in: source + 'images/*.*',
+    out: dest + 'images/'
+  };
 
 // clear the dist folder
-gulp.task('clean:dist', function() {
-  return del.sync('dist');
-})
+gulp.task('clean', function() {
+  del([
+    dest + '*'
+  ]);
+});
 
 // SASS tasks
 gulp.task('sass', function() {
@@ -30,7 +42,7 @@ gulp.task('sass', function() {
 
 // concatenate js & css files added to html files into one minified file
 gulp.task('useref', function(){
-  return gulp.src('app/*.html')
+  return gulp.src('app/**/*.html')
     .pipe(useref())
     // Minifies only if it's a JavaScript file
     .pipe(gulpIf('*.js', uglify()))
@@ -41,16 +53,12 @@ gulp.task('useref', function(){
 });
 
 // Optimise images
-gulp.task('images', function(){
-  return gulp.src('app/images/**/*.+(png|jpg|jpeg|gif|svg)')
-  // Caching images that ran through imagemin
-  .pipe(cache(imagemin({
-      optimizationLevel: 3,
-      interlaced: true,
-      progressive: true
 
-    })))
-  .pipe(gulp.dest('dist/images'))
+gulp.task('images', function(){
+  return gulp.src(images.in)
+  // Caching images that ran through imagemin
+    .pipe(imagemin({progressive: true,svgoPlugins: [{removeViewBox: false}],use: [pngquant()]}))
+    .pipe(gulp.dest(images.out));
 });
 
 // Copy fonts folder to dist
@@ -64,7 +72,7 @@ gulp.task('fonts', function() {
 gulp.task('browserSync', function() {
   browserSync.init({
     server: {
-      baseDir: 'app'
+      baseDir: source
     },
   })
 })
@@ -73,7 +81,7 @@ gulp.task('browserSync', function() {
 gulp.task('build-browserSync', function() {
   browserSync.init({
     server: {
-      baseDir: 'dist'
+      baseDir: dest
     },
   })
 })
@@ -90,7 +98,7 @@ gulp.task('watch', ['browserSync', 'sass'], function(){
 
 
 gulp.task('build', function (callback) {
-  runSequence('clean:dist',
+  runSequence('clean',
     ['sass', 'useref', 'images', 'fonts', 'build-browserSync'],
     callback
   )
